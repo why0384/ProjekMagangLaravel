@@ -15,7 +15,7 @@ class DriverVehicleController extends Controller
         $data = [
             "title"                 => "Konfigurasi Sopir dan Kendaraan",
             "menuDriverVehicle"     => "active",
-            "drivervehicle"         => DriverVehicle::with(['driver','vehicle'])->get(),
+            "drivervehicle"         => DriverVehicle::get(),
         ];
         return view('driver_vehicle/driver_vehicle', $data);
     }

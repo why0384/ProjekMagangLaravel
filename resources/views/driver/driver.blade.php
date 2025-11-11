@@ -8,7 +8,7 @@
         {{ $title }}
     </h1>
     
-    <div class="card">
+    <div class="card shadow mb-4">
         <div class="card-header">
             <a href="{{ route('driverCreate') }}" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus mr-2"></i>
@@ -17,7 +17,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover table-sm text-sm" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover table-sm text-sm dataTable" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center bg-primary text-white">
                         <tr>
                             <th scope="col">#</th>
@@ -49,11 +49,18 @@
 
                                     @else ($item->status_driver == 'inactive')
                                         <div class="badge badge-danger justify-content-center d-flex">
-                                            Tidak Aktif 
+                                            Nonaktif 
                                         </div>
                                     @endif
                                 </td>
                                 <td class="text-center">
+                                    <button 
+                                        class="btn btn-sm toggle-status-btn 
+                                        {{ $item->status_driver === 'active' ? 'btn-secondary' : 'btn-success' }}" 
+                                        data-id="{{ $item->id }}">
+                                        {{ $item->status_driver === 'active' ? 'Nonaktifkan' : 'Aktifkan' }}
+                                    </button>
+
                                     <a href="{{ route('driverEdit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -98,6 +105,64 @@
         </div>
     </div>
 
-    
-    
+
+
+
+
+    @push('scripts')
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.toggle-status-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const driverId = this.getAttribute('data-id');
+                const buttonEl = this;
+
+                fetch(`/driver/toggle-status/${driverId}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update tampilan tombol & badge status
+                        const row = buttonEl.closest('tr');
+                        const badge = row.querySelector('.badge');
+
+                        if (data.status_driver === 'active') {
+                            badge.classList.remove('badge-danger');
+                            badge.classList.add('badge-success');
+                            badge.textContent = 'Aktif';
+
+                            buttonEl.classList.remove('btn-success');
+                            buttonEl.classList.add('btn-secondary');
+                            buttonEl.textContent = 'Nonaktifkan';
+                        } else {
+                            badge.classList.remove('badge-success');
+                            badge.classList.add('badge-danger');
+                            badge.textContent = 'Tidak Aktif';
+
+                            buttonEl.classList.remove('btn-secondary');
+                            buttonEl.classList.add('btn-success');
+                            buttonEl.textContent = 'Aktifkan';
+                        }
+                    } else {
+                        alert('Gagal mengubah status');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan!');
+                });
+            });
+        });
+    });
+    </script>
+    @endpush
 @endsection
+
+    

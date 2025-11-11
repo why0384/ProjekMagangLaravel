@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('class_student')->nullable();
             $table->text('address_student');
             $table->string('phone_student')->nullable();
+            $table->enum('service_student', ['antar', 'jemput','antar-jemput'])->default('antar-jemput');
+            $table->enum('status_student', ['active', 'inactive'])->default('active');
+            $table->string('photo_student')->nullable();
             $table->timestamps();
         });
     }

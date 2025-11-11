@@ -7,10 +7,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverVehicleController;
+use App\Http\Controllers\RideRequestController;
 
 Route::get('/', function () {
     if (session()->has('login')) {
@@ -55,6 +59,10 @@ Route::middleware('checkLogin')->group(function(){
     Route::post('driver/update/{id}', [DriverController::class, 'update'])->name('driverUpdate');
     Route::delete('/driver/destroy{id}', [DriverController::class, 'destroy'])->name('driverDelete');
 
+    // tombol ajax driver
+    Route::post('/driver/toggle-status/{id}', [DriverController::class, 'toggleStatus'])->name('driver.toggleStatus');
+    
+
     // Vehicle
     Route::get('vehicle', [VehicleController::class, 'vehicle'])->name('vehicle');
     Route::get('vehicle/create', [VehicleController::class, 'create'])->name('vehicleCreate');
@@ -82,6 +90,32 @@ Route::middleware('checkLogin')->group(function(){
     Route::post('/status/update/{status}', [StatusController::class, 'update'])->name('statusUpdate');
     Route::delete('/status/destroy/{status}', [StatusController::class, 'destroy'])->name('statusDelete');
 
+    // History
+    Route::get('history', [HistoryController::class, 'history'])->name('history');
+    Route::get('history/create', [HistoryController::class, 'create'])->name('historyCreate');
+    Route::post('history/store', [HistoryController::class, 'store'])->name('historyStore');
+    
+    Route::get('history/edit/{id}', [HistoryController::class, 'edit'])->name('historyEdit');
+    Route::post('history/update/{id}', [HistoryController::class, 'update'])->name('historyUpdate');
+    Route::delete('/history/destroy{id}', [HistoryController::class, 'delete'])->name('historyDelete');            
+
+    // Schedule 
+    Route::get('schedule', [ScheduleController::class, 'schedule'])->name('schedule');
+    Route::get('schedule/create', [ScheduleController::class, 'create'])->name('scheduleCreate');
+    Route::post('schedule/store', [ScheduleController::class, 'store'])->name('scheduleStore');
+
+    Route::get('schedule/edit/{id}', [ScheduleController::class, 'edit'])->name('scheduleEdit');
+    Route::post('schedule/update/{id}', [ScheduleController::class, 'update'])->name('scheduleUpdate');
+    Route::delete('/schedule/destroy{id}', [ScheduleController::class, 'destroy'])->name('scheduleDelete');
+
+    // Request
+    Route::get('riderequest', [RideRequestController::class, 'rideRequest'])->name('riderequest');
+    Route::get('riderequest/create', [RideRequestController::class, 'create'])->name('rideRequestCreate');
+    Route::post('riderequest/store', [RideRequestController::class, 'store'])->name('rideRequestStore');
+
+    Route::get('riderequest/edit/{id}', [RideRequestController::class, 'edit'])->name('rideRequestEdit');
+    Route::post('riderequest/update/{id}', [RideRequestController::class, 'update'])->name('rideRequestUpdate');
+    Route::delete('/riderequest/destroy/{id}', [RideRequestController::class, 'destroy'])->name('rideRequestDelete');
 }); 
 
 

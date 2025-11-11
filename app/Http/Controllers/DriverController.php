@@ -116,4 +116,21 @@ class DriverController extends Controller
 
         return redirect()->route('driver')->with('success', 'Data sopir berhasil dihapus!');
     }  
+
+
+    public function toggleStatus($id)
+    {
+        $driver = Driver::findOrFail($id);
+
+        // Ubah status
+        $driver->status_driver = $driver->status_driver === 'active' ? 'inactive' : 'active';
+        $driver->save();
+
+        // Kembalikan response JSON
+        return response()->json([
+            'success' => true,
+            'status_driver' => $driver->status_driver
+        ]);
+    }
+
 }

@@ -29,7 +29,7 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode_status' => 'required|unique:status,kode_status',
+            'kode_status' => 'required|',
             'nama_status' => 'required',
         ], [
             'kode_status.required' => 'Kode status wajib diisi',

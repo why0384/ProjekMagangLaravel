@@ -1,0 +1,40 @@
+/* =======================
+   Custom Style DataTables
+   ======================= */
+
+/* Hilangkan bagian "Show entries" */
+.dataTables_length {
+    display: none !important;
+}
+
+/* Hilangkan bagian pagination di bawah tabel */
+.dataTables_paginate {
+    display: none !important;
+}
+
+/* Hilangkan info jumlah data (Showing 1 to 10...) */
+.dataTables_info {
+    display: none !important;
+}
+
+/* Tata letak search agar tetap tampil rapi */
+.dataTables_filter {
+    float: right !important;
+    margin-bottom: 10px;
+}
+
+/* Style input search */
+.dataTables_filter input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 10px;
+    outline: none;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .dataTables_filter {
+        float: none !important;
+        text-align: left;
+    }
+}

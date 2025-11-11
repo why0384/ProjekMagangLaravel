@@ -22,5 +22,11 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css') }} " rel="stylesheet">
+    <link href="{{ asset('css/custom-datatables.css') }}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
 
 </head>

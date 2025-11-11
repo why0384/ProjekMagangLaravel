@@ -8,7 +8,7 @@
         {{ $title }}
     </h1>
     
-    <div class="card">
+    <div class="card shadow mb-4">
         <div class="card-header">
             <a href="{{ route('userCreate') }}" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus mr-2"></i>
@@ -17,7 +17,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover table-sm dataTable" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center bg-primary text-white">
                         <tr>
                             <th>#</th>

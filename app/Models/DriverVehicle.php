@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class DriverVehicle extends Model
 { 
 
-    protected $fillable = ['driver_id', 'vehicle_id'];
+    protected $fillable = [
+        'driver_id', 
+        'vehicle_id'
+    ];
 
     public function driver()
     {

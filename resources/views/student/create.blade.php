@@ -17,9 +17,20 @@
         </div>
 
         <div class="card-body"> 
-            <form class="text-dark" action="{{ route('studentStore') }}" method="post">
+            <form class="text-dark" action="{{ route('studentStore') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
+                    <!-- Foto Siswa -->
+                    <div class="form-group">
+                        <label for="photo_student">Foto Siswa</label>
+                        <input type="file" class="form-control" name="photo_student" id="photo_student" accept="image/*">
+                        @if(isset($student) && $student->photo_student)
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/' . $student->photo_student) }}" width="80" class="rounded">
+                            </div>
+                        @endif
+                    </div>
+                    <!-- User -->
                     <div class="col-xl-6 mb-3">
                         <label for="user_id">Pilih User (Siswa)</label>
                         <select name="user_id" id="user_id" class="form-control" required>

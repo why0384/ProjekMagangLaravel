@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('status', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
             $table->string('kode_status')->unique(); // contoh: 1, 2, 3, dst
             $table->string('nama_status');            // contoh: Pengemudi siap

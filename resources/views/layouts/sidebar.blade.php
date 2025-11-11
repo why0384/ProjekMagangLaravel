@@ -11,7 +11,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-2">Antar-Jemput</div>
             </a>
-
+ 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -38,39 +38,41 @@
                     <span>Siswa</span></a>
             </li>
 
-
-            <li class="nav-item {{ $menuDriver ?? '' }}">
-                <a class="nav-link" href="{{ route('driver') }}">
-                    <i class="fas fa-fw fa-id-badge"></i>
-                    <span>Sopir dan Kendaraan </span></a>
-            </li>
-
-            <li class="nav-item {{ $menuVehicle ?? '' }}">
-                <a class="nav-link" href="{{ route('vehicle') }}">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-car-side"></i>
-                    <span>Kendaraan</span></a>
+                    <span>Sopir dan Kendaraan</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ $menuDriver ?? '' }}" href="{{ route('driver') }}">Sopir</a>
+                        <a class="collapse-item {{ $menuVehicle ?? '' }}" href="{{ route('vehicle') }}">Kendaraan</a>
+                        <a class="collapse-item {{ $menuDriverVehicle ?? '' }}" href="{{ route('driver_vehicle') }}">Konfigurasi</a>
+                    </div>
+                </div>
             </li>
-
-            <li class="nav-item {{ $menuDriverVehicle ?? '' }}">
-                <a class="nav-link" href="{{ route('driver_vehicle') }}">
-                    <i class="fas fa-fw fa-sync"></i>
-                    <span>Konfigurasi</span></a>
-            </li>
-
+            
             <li class="nav-item {{ $menuStatus ?? '' }}">
                 <a class="nav-link" href="{{ route('status') }}">
                     <i class="fas fa-fw fa-info"></i>
                     <span>Status Aplikasi</span></a>
             </li>
 
-            <li class="nav-item {{ $menuDriverVehicle ?? '' }}">
-                <a class="nav-link" href="{{ route('driver_vehicle') }}">
+            <li class="nav-item {{ $menuRideRequest ?? '' }}">
+                <a class="nav-link" href="{{ route('riderequest') }}">
+                    <i class="fas fa-fw fa-route"></i>
+                    <span>Request</span></a>
+            </li>
+
+            <li class="nav-item {{ $menuSchedule ?? '' }}">
+                <a class="nav-link" href="{{ route('schedule') }}">
                     <i class="fas fa-fw fa-calendar-alt"></i>
                     <span>Jadwal</span></a>
             </li>
 
-            <li class="nav-item {{ $menuStatus ?? '' }}">
-                <a class="nav-link" href="{{ route('status') }}">
+            <li class="nav-item {{ $menuHistory ?? '' }}">
+                <a class="nav-link" href="{{ route('history') }}">
                     <i class="fas fa-fw fa-history"></i>
                     <span>Riwayat</span></a>
             </li>

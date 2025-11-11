@@ -8,9 +8,38 @@
     <!-- Page level plugins -->
     <script src="{{ asset('sbadmin2/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    
     <!-- Page level custom scripts -->
-    <script src="{{ asset('sbadmin2/js/demo/datatables-demo.js') }}"></script>
+    {{-- <script src="{{ asset('sbadmin2/js/demo/datatables-demo.js') }}"></script> --}}
 
+    <script>
+    $(document).ready(function() {
+        // Terapkan DataTables tanpa pagination dan tanpa length change
+        $('table.dataTable').DataTable({
+            paging: false,
+            info: false,
+            lengthChange: false,
+            searching: true
+        });
+    });
+    </script>
+
+    
+    <script>
+        flatpickr("#pickup_time", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true
+        });
+
+        flatpickr("#dropoff_time", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true
+        });
+    </script>
 
     <script>
         @if (session('success'))
@@ -49,6 +78,10 @@
             })
         @endif
     </script>
+
+    //untuk ajax toggle status driver
+    @stack('scripts')
+
 </body>
 
 

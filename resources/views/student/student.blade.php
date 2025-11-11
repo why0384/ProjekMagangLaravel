@@ -8,7 +8,7 @@
         {{ $title }}
     </h1>
     
-    <div class="card">
+    <div class="card shadow mb-4">
         <div class="card-header">
             <a href="{{ route('studentCreate') }}" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus mr-2"></i>
@@ -17,15 +17,18 @@
         </div>
         <div class="card-body">
             <div class="table-responsive ">
-                <table class="table table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover table-sm dataTable" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center text-dark">
                         <tr class="bg-primary text-white">
                             <th scope="col">#</th>
+                            <th scope="col">Foto</th>
                             <th scope="col">Username</th>
                             <th scope="col">Nama Lengkap</th>
                             <th scope="col">Kelas</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">No Telepon</th>
+                            <th scope="col">Layanan</th>
+                            <th scope="col">Status</th>
                             <th scope="col">
                                 <i class="fas fa-cog"></i>
                             </th>
@@ -36,10 +39,34 @@
                             <tr class="text-dark text-center">
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td>{{ $item->user ? $item->user->name : '-' }}</td>
+                                <td>
+                                    @if ($item->photo_student)
+                                        <img src="{{ asset('storage/' . $item->photo_student) }}" width="50" height="50" class="rounded-circle" alt="Foto Siswa">
+                                    @else
+                                        <img src="{{ asset('images/default.png') }}" width="50" height="50" class="rounded-circle" alt="Default">
+                                    @endif
+                                </td>
                                 <td>{{ $item->name_student }}</td>
                                 <td>{{ $item->class_student }}</td>
                                 <td>{{ $item->address_student }}</td>
                                 <td>{{ $item->phone_student }}</td>
+                                <td>
+                                    @if ($item->service_student === 'antar')
+                                        <span class="badge badge-info">Antar</span>
+                                    @elseif ($item->service_student === 'jemput')
+                                        <span class="badge badge-warning">Jemput</span>
+                                    @else
+                                        <span class="badge badge-success">Antar-Jemput</span>
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if ($item->status_student === 'active')
+                                        <span class="badge badge-success">Aktif</span>
+                                    @else
+                                        <span class="badge badge-danger">Tidak Aktif</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ route('studentEdit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>

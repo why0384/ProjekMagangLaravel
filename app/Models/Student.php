@@ -13,7 +13,9 @@ class Student extends Model
         'class_student',
         'address_student',
         'phone_student',
-    
+        'service_student',
+        'status_student',
+        'photo_student',
     ];
     //Relasi
 

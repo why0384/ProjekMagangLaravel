@@ -7,7 +7,7 @@
     <i class="fas fa-tachometer-alt mr-2"></i>
     {{ $title }}
 </h1>
-
+ 
 <div class="row">
     <!-- Card 1: Total User -->
     <div class="col-xl-3 col-md-6 mb-4">

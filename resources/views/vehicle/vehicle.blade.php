@@ -17,10 +17,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover table-sm text-sm" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover table-sm text-sm dataTable" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center bg-primary text-white">
                         <tr>
-                            <th width="3%">No</th>
+                            <th>#</th>
                             <th>Plat Nomer</th>
                             <th>Nama Kendaraan</th>
                             <th>Merek Kendaraan</th>

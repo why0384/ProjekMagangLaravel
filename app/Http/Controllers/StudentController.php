@@ -37,6 +37,9 @@ class StudentController extends Controller
             'class_student' => 'required',
             'address_student' => 'required',
             'phone_student' => 'required',
+            'service_student' => 'required|in:antar,jemput,antar-jemput',
+            'status_student' => 'required|in:active,inactive',
+            'photo_student' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'user_id.required' => 'User wajib diisi ',
             'user_id.exists' => 'User tidak ditemukan',
@@ -44,6 +47,13 @@ class StudentController extends Controller
             'class_student.required' => 'Kelas siswa wajib diisi',
             'address_student.required' => 'Alamat siswa wajib diisi',
             'phone_student.required' => 'No. Telepon siswa wajib diisi',
+            'service_student.required' => 'Layanan antar/jemput wajib diisi',
+            'service_student.in' => 'Layanan antar/jemput tidak valid',
+            'status_student.required' => 'Status siswa wajib diisi',
+            'status_student.in' => 'Status siswa tidak valid',
+            'photo_student.image' => 'Foto siswa harus berupa gambar',
+            'photo_student.mimes' => 'Foto siswa harus berformat jpg, jpeg, atau png',
+            'photo_student.max' => 'Ukuran foto siswa maksimal 2MB',
         ]);
 
  
@@ -53,6 +63,17 @@ class StudentController extends Controller
         $student->class_student = $request->class_student;
         $student->address_student = $request->address_student;
         $student->phone_student = $request->phone_student;
+        $student->service_student = $request->service_student;
+        $student->status_student = $request->status_student;
+
+        // ✅ Upload foto jika ada
+        if ($request->hasFile('photo_student')) {
+            $file = $request->file('photo_student');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/students'), $filename);
+            $student->photo_student = $filename;
+        }
+
         $student->save();     
 
         return redirect()->route('student')->with('success', 'Data siswa berhasil ditambahkan!');
@@ -96,6 +117,22 @@ class StudentController extends Controller
         $student->class_student = $request->class_student;
         $student->address_student = $request->address_student;
         $student->phone_student = $request->phone_student;
+        $student->service_student = $request->service_student;
+        $student->status_student = $request->status_student;
+
+        // ✅ Update foto baru jika diupload
+        if ($request->hasFile('photo_student')) {
+            // hapus foto lama
+            if ($student->photo_student && file_exists(public_path('uploads/students/'.$student->photo_student))) {
+                unlink(public_path('uploads/students/'.$student->photo_student));
+            }
+
+            $file = $request->file('photo_student');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/students'), $filename);
+            $student->photo_student = $filename;
+        }
+
         $student->save();     
 
         return redirect()->route('student')->with('success', 'Data siswa berhasil diperbarui!');
