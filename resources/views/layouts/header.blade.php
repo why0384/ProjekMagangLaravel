@@ -11,22 +11,27 @@
 
     <title> {{ $title }}</title>
 
-    <!-- Custom fonts for this template--> 
-    <link href="{{ asset ('sbadmin2/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    
+    <!-- Bootstrap core CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="{{ asset ('sbadmin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome (CDN) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <link href="{{ asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css') }} " rel="stylesheet">
-    <link href="{{ asset('css/custom-datatables.css') }}" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
 
+    <!-- SB Admin 2 CSS (CDN alternatif) -->
+    <link href="https://cdn.jsdelivr.net/gh/StartBootstrap/startbootstrap-sb-admin-2@master/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS (CDN) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Flatpickr CSS (CDN) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- (Opsional) Custom CSS kamu -->
+    <link rel="stylesheet" href="{{ asset('css/custom-datatables.css') }}">
     
 
 </head>
