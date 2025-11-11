@@ -2,6 +2,16 @@
    Custom Style DataTables
    ======================= */
 
+/* Meratakan header */
+#dataTable thead th {
+    text-align: center !important;
+}
+
+/* Meratakan isi konten */
+#dataTable tbody td {
+    text-align: center !important;
+}
+
 /* Hilangkan bagian "Show entries" */
 .dataTables_length {
     display: none !important;

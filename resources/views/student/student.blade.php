@@ -38,14 +38,14 @@
                         @foreach ($student as $item)
                             <tr class="text-dark text-center">
                                 <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $item->user ? $item->user->name : '-' }}</td>
                                 <td>
                                     @if ($item->photo_student)
-                                        <img src="{{ asset('storage/' . $item->photo_student) }}" width="50" height="50" class="rounded-circle" alt="Foto Siswa">
+                                        <img src="{{ asset('uploads/students/' . $item->photo_student) }}" width="50" height="50" class="rounded-circle" alt="Foto Siswa">
                                     @else
-                                        <img src="{{ asset('images/default.png') }}" width="50" height="50" class="rounded-circle" alt="Default">
+                                        <img src="{{ asset('images/default.png') }}" width="50" height="50" class="rounded-circle" alt="Kosong">
                                     @endif
                                 </td>
+                                <td>{{ $item->user ? $item->user->name : '-' }}</td>
                                 <td>{{ $item->name_student }}</td>
                                 <td>{{ $item->class_student }}</td>
                                 <td>{{ $item->address_student }}</td>

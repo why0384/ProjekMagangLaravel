@@ -59,9 +59,10 @@
                         @enderror
                     </div>
 
+                    {{-- == PERUBAHAN DIMULAI DARI SINI == --}}
                     <div class="col-md-4 mb-3">
                         <label for="pickup_time">Waktu Penjemputan</label>
-                        <input type="time" name="pickup_time" id="pickup_time" class="form-control"
+                        <input type="time" name="pickup_time" id="pickup_time" pattern="[0-9]{2}:[0-9]{2}" class="form-control"
                             value="{{ old('pickup_time', $history->pickup_time) }}">
                         @error('pickup_time')
                             <small class="text-danger">{{ $message }}</small>
@@ -70,12 +71,13 @@
 
                     <div class="col-md-4 mb-3">
                         <label for="dropoff_time">Waktu Pengantaran</label>
-                        <input type="time" name="dropoff_time" id="dropoff_time" class="form-control"
+                        <input type="time" name="dropoff_time" id="dropoff_time" pattern="[0-9]{2}:[0-9]{2}" class="form-control"
                             value="{{ old('dropoff_time', $history->dropoff_time) }}">
                         @error('dropoff_time')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
+                    {{-- == PERUBAHAN SELESAI DI SINI == --}}
                 </div>
 
                 <div class="row">

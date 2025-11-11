@@ -51,7 +51,7 @@
                 <div>
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fas fa-save mr-2"></i>
-                        Update
+                        Simpan
                     </button>
                 </div>
             </form>

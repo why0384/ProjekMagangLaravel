@@ -39,7 +39,7 @@ class StudentController extends Controller
             'phone_student' => 'required',
             'service_student' => 'required|in:antar,jemput,antar-jemput',
             'status_student' => 'required|in:active,inactive',
-            'photo_student' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'photo_student' => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
         ], [
             'user_id.required' => 'User wajib diisi ',
             'user_id.exists' => 'User tidak ditemukan',
@@ -53,7 +53,7 @@ class StudentController extends Controller
             'status_student.in' => 'Status siswa tidak valid',
             'photo_student.image' => 'Foto siswa harus berupa gambar',
             'photo_student.mimes' => 'Foto siswa harus berformat jpg, jpeg, atau png',
-            'photo_student.max' => 'Ukuran foto siswa maksimal 2MB',
+            'photo_student.max' => 'Ukuran foto siswa maksimal 5MB',
         ]);
 
  

@@ -12,10 +12,10 @@
     <title> {{ $title }}</title>
 
     
-    <!-- Bootstrap core CSS (CDN) -->
+    <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Font Awesome (CDN) -->
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <!-- Google Fonts -->
@@ -24,13 +24,13 @@
     <!-- SB Admin 2 CSS (CDN alternatif) -->
     <link href="https://cdn.jsdelivr.net/gh/StartBootstrap/startbootstrap-sb-admin-2@master/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- DataTables CSS (CDN) -->
+    <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <!-- Flatpickr CSS (CDN) -->
+    <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-    <!-- (Opsional) Custom CSS kamu -->
+    <!-- Custom CSS-->
     <link rel="stylesheet" href="{{ asset('css/custom-datatables.css') }}">
     
 
