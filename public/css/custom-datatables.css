@@ -3,12 +3,12 @@
    ======================= */
 
 /* Meratakan header */
-#dataTable thead th {
+table.dataTable thead th {
     text-align: center !important;
 }
 
 /* Meratakan isi konten */
-#dataTable tbody td {
+table.dataTable tbody td {
     text-align: center !important;
 }
 
