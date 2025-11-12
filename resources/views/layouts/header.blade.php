@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <!-- Custom CSS-->
-    <link rel="stylesheet" href="{{ secure-asset('css/custom-datatables.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/custom-datatables.css') }}">
     
 
 </head>
