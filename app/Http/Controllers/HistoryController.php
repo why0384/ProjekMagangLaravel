@@ -7,7 +7,6 @@ use App\Models\Status;
 use App\Models\History;
 use App\Models\Student;
 use App\Models\Vehicle;
-use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class HistoryController extends Controller
@@ -17,7 +16,7 @@ class HistoryController extends Controller
         $data = [ 
                 "title"         => "Data Riwayat",
                 "menuHistory"   => "active",
-                "history"       => History::get(),
+                "histories"     => History::with(['student','driver','vehicle','status'])->get(),
             ];
         return view('history/history', $data);
     }
@@ -27,11 +26,10 @@ class HistoryController extends Controller
         $data = [
             "title"            => "Tambah Data Riwayat",
             "menuHistory"      => "active",
-            "schedules"        => Schedule::get(),
-            "students"         => Student::get(),
-            "drivers"          => Driver::get(),
-            "vehicles"         => Vehicle::get(),
-            "statuses"         => Status::get(),
+            "students"         => Student::all(),
+            "drivers"          => Driver::all(),
+            "vehicles"         => Vehicle::all(),
+            "statuses"         => Status::all(),
             
 
         ];
@@ -41,7 +39,6 @@ class HistoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'schedule_id' => 'required|exists:schedules,id',
             'driver_id' => 'required|exists:drivers,id',
             'vehicle_id' => 'required|exists:vehicles,id',
             'pickup_time' => 'required|date_format:H:i:s',
@@ -50,7 +47,6 @@ class HistoryController extends Controller
             'dropoff_location' => 'required|string|max:255',
             'status_id' => 'required|exists:statuses,id',
         ], [
-            'schedule_id.exists' => 'Jadwal tidak ditemukan',
             'driver_id.exists' => 'Sopir tidak ditemukan',
             'vehicle_id.exists' => 'Kendaraan tidak ditemukan',
             'pickup_time.date_format' => 'Waktu penjemputan tidak valid',
@@ -62,7 +58,6 @@ class HistoryController extends Controller
         
 
         $history = new History();
-        $history->schedule_id = $request->schedule_id;
         $history->driver_id = $request->driver_id;
         $history->vehicle_id = $request->vehicle_id;
         $history->pickup_time = $request->pickup_time;
@@ -83,11 +78,10 @@ class HistoryController extends Controller
             "title"             => "Edit Data Riwayat",
             "menuHistory"       => "active",
             "history"           => $history,
-            "schedules"        => Schedule::get(),
-            "students"         => Student::get(),
-            "drivers"          => Driver::get(),
-            "vehicles"         => Vehicle::get(),
-            "statuses"         => Status::get(),
+            "students"         => Student::all(),
+            "drivers"          => Driver::all(),
+            "vehicles"         => Vehicle::all(),
+            "statuses"         => Status::all(),
 
         ];
         return view('history/edit', $data);
@@ -96,7 +90,6 @@ class HistoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'schedule_id' => 'required|exists:schedules,id',
             'driver_id' => 'required|exists:drivers,id',
             'vehicle_id' => 'required|exists:vehicles,id',
             'pickup_time' => 'required|date_format:H:i:s',
@@ -105,7 +98,6 @@ class HistoryController extends Controller
             'dropoff_location' => 'required|string|max:255',
             'status_id' => 'required|exists:statuses,id',
         ], [
-            'schedule_id.exists' => 'Jadwal tidak ditemukan',
             'driver_id.exists' => 'Sopir tidak ditemukan',
             'vehicle_id.exists' => 'Kendaraan tidak ditemukan',
             'pickup_time.date_format' => 'Waktu penjemputan tidak valid',
@@ -116,7 +108,6 @@ class HistoryController extends Controller
         ]);
 
         $history = History::findOrFail($id);
-        $history->schedule_id = $request->schedule_id;
         $history->driver_id = $request->driver_id;
         $history->vehicle_id = $request->vehicle_id;
         $history->pickup_time = $request->pickup_time;

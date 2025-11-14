@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class History extends Model
 {
     protected $fillable = [
-        'schedule_id',
         'student_id',
         'driver_id',
         'vehicle_id',
@@ -18,11 +17,10 @@ class History extends Model
         'status_id',
     ];
 
-    public function schedule()
+    public function student()
     {
-        return $this->belongsTo(Schedule::class, 'schedule_id');
+        return $this->belongsTo(Student::class,'student_id');
     }
-
     public function driver()
     {
         return $this->belongsTo(Driver::class, 'driver_id');

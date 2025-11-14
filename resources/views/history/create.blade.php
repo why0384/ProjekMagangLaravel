@@ -21,20 +21,6 @@
             @csrf
 
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="schedule_id">Jadwal</label>
-                    <select name="schedule_id" id="schedule_id" class="form-control" required>
-                        <option value="" disabled selected>-- Pilih Jadwal --</option>
-                        @foreach($schedules as $schedule)
-                            <option value="{{ $schedule->id }}" {{ old('schedule_id') == $schedule->id ? 'selected' : '' }}>
-                                {{ $schedule->id }} - {{ $schedule->pickup_location }} → {{ $schedule->dropoff_location }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('schedule_id')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
 
                 <div class="col-md-6 mb-3">
                     <label for="student_id">Siswa</label>

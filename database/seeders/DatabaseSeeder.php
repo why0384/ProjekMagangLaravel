@@ -134,7 +134,7 @@ class DatabaseSeeder extends Seeder
         // 9️⃣ HISTORY
         // =========================
         History::create([
-            'schedule_id' => $schedule->id,
+            'student_id' =>$student->id,
             'driver_id' => $driver->id,
             'vehicle_id' => $vehicle->id,
             'pickup_time' => '06:35:00',

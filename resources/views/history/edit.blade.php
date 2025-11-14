@@ -21,14 +21,6 @@
                 @method('PUT')
 
                 <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label for="schedule_id">Jadwal</label>
-                        <input type="number" name="schedule_id" id="schedule_id" class="form-control"
-                            value="{{ old('schedule_id', $history->schedule_id) }}" placeholder="Masukkan ID Jadwal">
-                        @error('schedule_id')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="student_id">Siswa</label>

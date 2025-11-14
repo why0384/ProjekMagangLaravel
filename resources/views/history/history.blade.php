@@ -30,7 +30,6 @@
                     <thead class="text-center bg-primary text-white">
                         <tr>
                             <th>#</th>
-                            <th>Jadwal</th>
                             <th>Siswa</th>
                             <th>Sopir</th>
                             <th>Kendaraan</th>
@@ -43,13 +42,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($history as $item)
+                        @forelse ($histories as $item)
                             <tr class="text-center">
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->schedule_id ?? '-' }}</td>
-                                <td>{{ $item->student_id ?? '-' }}</td>
-                                <td>{{ $item->driver_id ?? '-' }}</td>
-                                <td>{{ $item->vehicle_id ?? '-' }}</td>
+                                <td>{{ $item->student ? $item->student->name_student : '-' }}</td>
+                                <td>{{ $item->driver ? $item->driver->name_driver : '-' }}</td>
+                                <td>{{ $item->vehicle ? $item->vehicle->name_vehicle : '-' }}</td>
                                 <td>{{ $item->pickup_time ? \Carbon\Carbon::parse($item->pickup_time)->format('H:i') : '-' }}</td>
                                 <td>{{ $item->dropoff_time ? \Carbon\Carbon::parse($item->dropoff_time)->format('H:i') : '-' }}</td>
                                 <td>{{ $item->pickup_location ?? '-' }}</td>

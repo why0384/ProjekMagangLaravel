@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
 
             // Kolom sesuai dengan model History
-            $table->unsignedBigInteger('schedule_id')->nullable();
+            $table->unsignedBigInteger('student_id')->nullable();
             $table->unsignedBigInteger('driver_id')->nullable();
             $table->unsignedBigInteger('vehicle_id')->nullable();
+
             $table->time('pickup_time')->nullable();
             $table->time('dropoff_time')->nullable();
             $table->string('pickup_location')->nullable();
@@ -28,7 +29,7 @@ return new class extends Migration
             $table->timestamps();
 
             // (opsional) relasi ke tabel lain
-            $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('set null');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null');
             $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('set null');
             $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('set null');
             $table->foreign('status_id')->references('id')->on('statuses')->onDelete('set null');
