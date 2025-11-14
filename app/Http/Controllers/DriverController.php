@@ -37,6 +37,7 @@ class DriverController extends Controller
             'address_driver' => 'required',
             'phone_driver' => 'required',
             'status_driver' => 'required',
+            'photo_driver' => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
         ], [
             'user_id.required' => 'User wajib diisi ',
             'user_id.exists' => 'User tidak ditemukan',
@@ -46,6 +47,9 @@ class DriverController extends Controller
             'address_driver.required' => 'Alamat sopir wajib diisi',
             'phone_driver.required' => 'No. Telepon sopir wajib diisi',
             'status_driver.required' => 'Status sopir wajib diisi',
+            'photo_driver.image' => 'Foto sopir harus berupa gambar',
+            'photo_driver.mimes' => 'Foto sopir harus berformat jpg, jpeg, atau png',
+            'photo_driver.max' => 'Ukuran foto sopir maksimal 5MB',
         ]);
 
  
@@ -56,6 +60,14 @@ class DriverController extends Controller
         $driver->address_driver = $request->address_driver;
         $driver->phone_driver = $request->phone_driver;
         $driver->status_driver = $request->status_driver;
+        
+        if ($request->hasFile('photo_driver')) {
+            $file = $request->file('photo_driver');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/drivers'), $filename);
+            $driver->photo_driver = $filename;
+        }
+
         $driver->save();
 
         return redirect()->route('driver')->with('success', 'Data sopir berhasil ditambahkan!');
@@ -103,6 +115,19 @@ class DriverController extends Controller
         $driver->address_driver = $request->address_driver;
         $driver->phone_driver = $request->phone_driver;
         $driver->status_driver = $request->status_driver;
+        
+         if ($request->hasFile('photo_driver')) {
+            // hapus foto lama
+            if ($driver->photo_driver && file_exists(public_path('uploads/drivers/'.$driver->photo_driver))) {
+                unlink(public_path('uploads/drivers/'.$driver->photo_driver));
+            }
+
+            $file = $request->file('photo_driver');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/drivers'), $filename);
+            $driver->photo_driver = $filename;
+        }
+
         $driver->save();
 
         // redirect

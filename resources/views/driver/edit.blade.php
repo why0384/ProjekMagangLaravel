@@ -17,9 +17,31 @@
         </div>
 
         <div class="card-body"> 
-            <form class="text-dark" action="{{ route('driverUpdate', $driver->id) }}" method="post">
+            <form class="text-dark" action="{{ route('driverUpdate', $driver->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
+                        <!-- Foto -->
+                    <div class="col-xl-6 mb-3">
+                        <label for="photo_driver">Foto Sopir</label>
+                        <input type="file" class="form-control" name="photo_driver" id="photo_driver" accept="image/*" onchange="previewImage(event)">
+                        
+                        @error('photo_driver')
+                            <small><span class="text-danger">{{ $message }}</span></small>
+                        @enderror
+                    </div>
+
+                    <div class="col-xl-6 mb-3">
+                        @if($driver->photo_driver)
+                            <div class="mt-2">
+                                <span>Foto Lama</span>
+                                <img src="{{ asset('uploads/drivers/' . $driver->photo_driver) }}" width="80" class="rounded">
+                                <span>Foto Baru</span>
+                                <img id="preview" src="{{ asset('images/default.png') }}" width="100" class="rounded border p-1">
+                            
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="col-xl-6 col-md-6 col-sm-12 mb-3">
                         <label for="user_id">Pilih User (Sopir)</label>
                         <select name="user_id" id="user_id" class="form-control" required>

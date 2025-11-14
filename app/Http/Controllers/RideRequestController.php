@@ -44,7 +44,6 @@ class RideRequestController extends Controller
             'vehicle_id' => 'required|exists:vehicles,id',
             'pickup_location' => 'required',
             'status' => 'required',
-            'queue_number' => 'required',
         ], [
             'student_id.required' => 'Siswa wajib diisi',
             'student_id.exists' => 'Siswa tidak ditemukan',
@@ -54,16 +53,21 @@ class RideRequestController extends Controller
             'vehicle_id.exists' => 'Kendaraan tidak ditemukan',
             'pickup_location.required' => 'Lokasi penjemputan wajib diisi',
             'status.required' => 'Status wajib diisi',
-            'queue_number.required' => 'Nomor antrian wajib diisi',
         ]);
 
+        // Ambil nomor antrian terakhir
+        $lastQueue = RideRequest::max('queue_number');
+
+        // Jika belum ada data → mulai dari 1
+        $nextQueue = $lastQueue ? $lastQueue + 1 : 1;
+        
         $rideRequest = new RideRequest();
         $rideRequest->student_id = $request->student_id;
         $rideRequest->driver_id = $request->driver_id;
         $rideRequest->vehicle_id = $request->vehicle_id;
         $rideRequest->pickup_location = $request->pickup_location;
         $rideRequest->status = $request->status;
-        $rideRequest->queue_number = $request->queue_number;
+        $rideRequest->queue_number = $nextQueue;
         $rideRequest->save();
 
         return redirect()->route('riderequest')->with('success', 'Ride request created successfully.');
@@ -92,7 +96,6 @@ class RideRequestController extends Controller
             'vehicle_id' => 'required|exists:vehicles,id',
             'pickup_location' => 'required',
             'status' => 'required',
-            'queue_number' => 'required',
         ], [
             'student_id.required' => 'Siswa wajib diisi',
             'student_id.exists' => 'Siswa tidak ditemukan',
@@ -102,7 +105,6 @@ class RideRequestController extends Controller
             'vehicle_id.exists' => 'Kendaraan tidak ditemukan',
             'pickup_location.required' => 'Lokasi penjemputan wajib diisi',
             'status.required' => 'Status wajib diisi',
-            'queue_number.required' => 'Nomor antrian wajib diisi',
         ]);
 
         $rideRequest = RideRequest::findOrFail($id);
@@ -111,7 +113,6 @@ class RideRequestController extends Controller
         $rideRequest->vehicle_id = $request->vehicle_id;
         $rideRequest->pickup_location = $request->pickup_location;
         $rideRequest->status = $request->status;
-        $rideRequest->queue_number = $request->queue_number;
         $rideRequest->save();
 
         return redirect()->route('riderequest')->with('success', 'Ride request updated successfully.');

@@ -21,6 +21,7 @@
                     <thead class="text-center bg-primary text-white">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Foto</th>
                             <th scope="col">Username</th>
                             <th scope="col">Nama Lengkap</th>
                             <th scope="col">Tanggal Lahir</th>
@@ -36,6 +37,13 @@
                         @foreach ($driver as $item)
                             <tr class="text-dark text-center" >
                                 <td scope="row" >{{ $loop->iteration }}</td>
+                                <td>
+                                    @if ($item->photo_driver)
+                                        <img src="{{ asset('uploads/drivers/' . $item->photo_driver) }}" width="50" height="50" class="rounded-circle" alt="Foto Sopir">
+                                    @else
+                                        <img src="{{ asset('images/default.png') }}" width="50" height="50" class="rounded-circle" alt="Kosong">
+                                    @endif
+                                </td>
                                 <td>{{ $item->user ? $item->user->name : '-' }}</td>
                                 <td>{{ $item->name_driver }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->birthdate_driver)->format('d-m-Y') }}</td>
@@ -82,7 +90,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah Anda yakin ingin menghapus siswa <b>{{ $item->name_driver }}</b>?
+                                            Apakah Anda yakin ingin menghapus sopir <b>{{ $item->name_driver }}</b>?
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Batal</button>

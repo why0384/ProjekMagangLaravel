@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('address_driver')->nullable();
             $table->string('phone_driver')->nullable();
             $table->enum('status_driver', ['active', 'inactive'])->default('active');
+            $table->string('photo_driver')->nullable();
             $table->timestamps();
         });
     }

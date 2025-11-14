@@ -21,6 +21,7 @@
                     <thead class="text-center bg-primary text-white">
                         <tr>
                             <th>#</th>
+                            <th>Foto</th>
                             <th>Plat Nomer</th>
                             <th>Nama Kendaraan</th>
                             <th>Merek Kendaraan</th>
@@ -34,6 +35,13 @@
                         @foreach ($vehicle as $item)
                             <tr class="text-dark">
                                 <td class="text-center">{{ $loop->iteration }}</td>
+                                <td>
+                                    @if ($item->photo_vehicle)
+                                        <img src="{{ asset('uploads/vehicles/' . $item->photo_vehicle) }}" width="50" height="50" class="rounded-circle" alt="Foto Siswa">
+                                    @else
+                                        <img src="{{ asset('images/default.png') }}" width="50" height="50" class="rounded-circle" alt="Kosong">
+                                    @endif
+                                </td>
                                 <td>{{ $item->license_plate }}</td>
                                 <td>{{ $item->name_vehicle }}</td>
                                 <td>{{ $item->type_vehicle }}</td>
@@ -60,7 +68,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah Anda yakin ingin menghapus siswa <b>{{ $item->name_vehicle }}</b>?
+                                            Apakah Anda yakin ingin menghapus kendaraan <b>{{ $item->name_vehicle }}</b>?
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>

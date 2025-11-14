@@ -14,6 +14,7 @@ class Driver extends Model
         'address_driver',
         'phone_driver',
         'status_driver',
+        'photo_driver',
     ]; 
     
     public function user(): BelongsTo

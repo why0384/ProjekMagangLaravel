@@ -71,7 +71,7 @@
                                 aria-labelledby="deleteModalLabel{{ $item->id }}" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-danger text-white">
+                                        <div class="modal-header">
                                             <h5 class="modal-title">Konfirmasi Hapus</h5>
                                             <button class="close text-white" type="button" data-dismiss="modal"
                                                 aria-label="Close">

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name_vehicle');
             $table->string('type_vehicle')->nullable();
             $table->year('year_vehicle')->nullable();
+            $table->string('photo_vehicle')->nullable();
             $table->timestamps();
-             
         });
     }
 

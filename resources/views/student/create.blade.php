@@ -33,7 +33,7 @@
                         <div class="mt-2">
                             <img id="preview" src="{{ asset('images/default.png') }}" width="100" class="rounded border p-1">
                         </div>
-                </div>
+                    </div>
 
                     <!-- Pilih User -->
                     <div class="col-xl-6 mb-3">

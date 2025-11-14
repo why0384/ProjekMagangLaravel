@@ -17,10 +17,30 @@
         </div>
 
         <div class="card-body"> 
-            <form class="text-dark" action="{{ route('vehicleUpdate', $vehicle->id) }}" method="post">
+            <form class="text-dark" action="{{ route('vehicleUpdate', $vehicle->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    
+                    <!-- Foto -->
+                    <div class="col-xl-6 mb-3">
+                        <label for="photo_vehicle">Foto Kendaraan</label>
+                        <input type="file" class="form-control" name="photo_vehicle" id="photo_vehicle" accept="image/*" onchange="previewImage(event)">
+                        
+                        @error('photo_vehicle')
+                            <small><span class="text-danger">{{ $message }}</span></small>
+                        @enderror
+                    </div>
+
+                    <div class="col-xl-6 mb-3">
+                        @if($vehicle->photo_vehicle)
+                            <div class="mt-2">
+                                <span>Foto Lama</span>
+                                <img src="{{ asset('uploads/vehicles/' . $vehicle->photo_vehicle) }}" width="80" class="rounded">
+                                <span>Foto Baru</span>
+                                <img id="preview" src="{{ asset('images/default.png') }}" width="100" class="rounded border p-1">
+                            
+                            </div>
+                        @endif
+                    </div>
                     <div class="col-xl-6 mb-3">
                         <label class="form-label">
                             <span class="text-danger">*</span>

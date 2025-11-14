@@ -89,16 +89,6 @@
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-
-                <!-- Nomor Antrian -->
-                <div class="col-xl-6 mb-3">
-                    <label for="queue_number">Nomor Antrian</label>
-                    <input type="number" name="queue_number" id="queue_number" class="form-control"
-                        value="{{ $rideRequest->queue_number }}" required>
-                    @error('queue_number')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
             </div>
 
             <div class="text-right mt-4">

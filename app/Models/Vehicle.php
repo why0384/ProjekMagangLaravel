@@ -11,6 +11,7 @@ class Vehicle extends Model
         'name_vehicle',
         'type_vehicle',
         'year_vehicle',
+        'photo_vehicle',
     ];
 
     public function drivers()

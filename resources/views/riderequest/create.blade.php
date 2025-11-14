@@ -76,11 +76,7 @@
                     </div>
 
                     <!-- Nomor Antrian -->
-                    <div class="col-xl-6 mb-3">
-                        <label for="queue_number">Nomor Antrian</label>
-                        <input type="number" name="queue_number" id="queue_number" class="form-control"
-                            value="{{ old('queue_number') }}" required>
-                    </div>
+                    <input type="hidden" name="queue_number">
                 </div>
                 
                 <div class="text-right mt-4">
