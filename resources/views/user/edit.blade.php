@@ -95,8 +95,7 @@
 
             <div>
                 <button class="btn btn-primary btn-sm">
-                    <i class="fas fa-edit mr-2"></i>
-                    Edit
+                    <i class="fas fa-save mr-2"></i> Simpan
                 </button>   
             </div>
               

@@ -92,8 +92,8 @@ class HistoryController extends Controller
         $request->validate([
             'driver_id' => 'required|exists:drivers,id',
             'vehicle_id' => 'required|exists:vehicles,id',
-            'pickup_time' => 'required|date_format:H:i:s',
-            'dropoff_time' => 'required|date_format:H:i:s',
+            'pickup_time' => 'required|date_format:H:i',
+            'dropoff_time' => 'required|date_format:H:i',
             'pickup_location' => 'required|string|max:255',
             'dropoff_location' => 'required|string|max:255',
             'status_id' => 'required|exists:statuses,id',

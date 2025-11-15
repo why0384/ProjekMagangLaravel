@@ -90,13 +90,9 @@
                     @enderror
                 </div>
             </div>
-
-            <div class="text-right mt-4">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save mr-1"></i> Simpan Perubahan
-                </button>
-                <a href="{{ route('riderequest') }}" class="btn btn-secondary">Batal</a>
-            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save mr-1"></i> Simpan Perubahan
+            </button>
         </form>
     </div>
 </div>

@@ -18,41 +18,56 @@
         <div class="card-body">
             <form class="text-dark" action="{{ route('historyUpdate', $history->id) }}" method="POST">
                 @csrf
-                @method('PUT')
 
                 <div class="row">
 
-                    <div class="col-md-4 mb-3">
-                        <label for="student_id">Siswa</label>
-                        <input type="number" name="student_id" id="student_id" class="form-control"
-                            value="{{ old('student_id', $history->student_id) }}" placeholder="Masukkan ID Siswa">
+                    <div class="col-xl-6 mb-3">
+                        <label for="student_id">Pilih Siswa</label>
+                        <select name="student_id" id="student_id" class="form-control" required>
+                            <option value="">-- Pilih Siswa --</option>
+                            @foreach ($students as $s)
+                                <option value="{{ $s->id }}" {{ $history->student_id == $s->id ? 'selected' : '' }}>
+                                    {{ $s->name_student }} - ({{ $s->class_student }})
+                                </option>
+                            @endforeach
+                        </select>
                         @error('student_id')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 
-                    <div class="col-md-4 mb-3">
-                        <label for="driver_id">Sopir</label>
-                        <input type="number" name="driver_id" id="driver_id" class="form-control"
-                            value="{{ old('driver_id', $history->driver_id) }}" placeholder="Masukkan ID Sopir">
+                    <div class="col-xl-6 mb-3">
+                        <label for="driver_id">Pilih Sopir</label>
+                        <select name="driver_id" id="driver_id" class="form-control" required>
+                            <option value="">-- Pilih Sopir --</option>
+                            @foreach ($drivers as $d)
+                                <option value="{{ $d->id }}" {{ $history->driver_id == $d->id ? 'selected' : '' }}>
+                                    {{ $d->name_driver }} - ({{ $d->phone_driver }})
+                                </option>
+                            @endforeach
+                        </select>
                         @error('driver_id')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label for="vehicle_id">Kendaraan</label>
-                        <input type="number" name="vehicle_id" id="vehicle_id" class="form-control"
-                            value="{{ old('vehicle_id', $history->vehicle_id) }}" placeholder="Masukkan ID Kendaraan">
+                    <div class="col-xl-6 mb-3">
+                        <label for="vehicle_id">Pilih Kendaraan</label>
+                        <select name="vehicle_id" id="vehicle_id" class="form-control" required>
+                            <option value="">-- Pilih Kendaraan --</option>
+                            @foreach ($vehicles as $v)
+                                <option value="{{ $v->id }}" {{ $history->vehicle_id == $v->id ? 'selected' : '' }}>
+                                    {{ $v->name_vehicle }} - ({{ $v->license_plate }})
+                                </option>
+                            @endforeach
+                        </select>
                         @error('vehicle_id')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 
                     {{-- == PERUBAHAN DIMULAI DARI SINI == --}}
-                    <div class="col-md-4 mb-3">
+                    <div class="col-xl-6 mb-3">
                         <label for="pickup_time">Waktu Penjemputan</label>
                         <input type="time" name="pickup_time" id="pickup_time" pattern="[0-9]{2}:[0-9]{2}" class="form-control"
                             value="{{ old('pickup_time', $history->pickup_time) }}">
@@ -61,7 +76,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4 mb-3">
+                    <div class="col-xl-6 mb-3">
                         <label for="dropoff_time">Waktu Pengantaran</label>
                         <input type="time" name="dropoff_time" id="dropoff_time" pattern="[0-9]{2}:[0-9]{2}" class="form-control"
                             value="{{ old('dropoff_time', $history->dropoff_time) }}">
@@ -70,10 +85,8 @@
                         @enderror
                     </div>
                     {{-- == PERUBAHAN SELESAI DI SINI == --}}
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
+                
+                    <div class="col-xl-6 mb-3">
                         <label for="pickup_location">Lokasi Penjemputan</label>
                         <input type="text" name="pickup_location" id="pickup_location" class="form-control"
                             value="{{ old('pickup_location', $history->pickup_location) }}" placeholder="Contoh: Rumah Siswa">
@@ -82,7 +95,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-xl-6 mb-3">
                         <label for="dropoff_location">Lokasi Pengantaran</label>
                         <input type="text" name="dropoff_location" id="dropoff_location" class="form-control"
                             value="{{ old('dropoff_location', $history->dropoff_location) }}" placeholder="Contoh: Sekolah SDN 1 Ketoyan">
@@ -90,23 +103,21 @@
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
+                    <div class="col-xl-6 mb-3">
+                        <label for="status_id">Status</label>
+                        <select name="status_id" id="status_id" class="form-control">
+                            <option selected disabled>-- Pilih Status --</option>
+                            <option value="1" {{ $history->status_id == 1 ? 'selected' : '' }}>Selesai</option>
+                            <option value="2" {{ $history->status_id == 2 ? 'selected' : '' }}>Proses</option>
+                            <option value="3" {{ $history->status_id == 3 ? 'selected' : '' }}>Dibatalkan</option>
+                        </select>
+                        @error('status_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
-
-                <div class="col-md-6 mb-3">
-                    <label for="status_id">Status</label>
-                    <select name="status_id" id="status_id" class="form-control">
-                        <option selected disabled>-- Pilih Status --</option>
-                        <option value="1" {{ $history->status_id == 1 ? 'selected' : '' }}>Selesai</option>
-                        <option value="2" {{ $history->status_id == 2 ? 'selected' : '' }}>Proses</option>
-                        <option value="3" {{ $history->status_id == 3 ? 'selected' : '' }}>Dibatalkan</option>
-                    </select>
-                    @error('status_id')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-
                 <button class="btn btn-primary btn-sm">
-                    <i class="fas fa-save mr-2"></i> Simpan Perubahan
+                    <i class="fas fa-save mr-2"></i> Simpan
                 </button>
             </form>
         </div>

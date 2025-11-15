@@ -41,10 +41,9 @@
                     </select>
                 </div>
 
-                <div class="text-right mt-4">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('driver_vehicle') }}" class="btn btn-secondary">Kembali</a>
-                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save mr-1"></i> Simpan
+                </button>
             </form>
         </div>
     </div>

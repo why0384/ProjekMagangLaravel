@@ -120,14 +120,9 @@
                     </div>
                 </div>
 
-                <div class="text-right mt-3">
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fas fa-save mr-2"></i> Simpan Perubahan
-                    </button>
-                    <a href="{{ route('schedule') }}" class="btn btn-secondary btn-sm">
-                        <i class="fas fa-times mr-2"></i> Batal
-                    </a>
-                </div>
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fas fa-save mr-2"></i> Simpan 
+                </button>
             </form>
         </div>
     </div>

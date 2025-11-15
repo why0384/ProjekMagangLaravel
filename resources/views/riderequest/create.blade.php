@@ -79,10 +79,9 @@
                     <input type="hidden" name="queue_number">
                 </div>
                 
-                <div class="text-right mt-4">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('riderequest') }}" class="btn btn-secondary">Kembali</a>
-                </div>
+                 <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fas fa-save mr-2"></i> Simpan
+                </button>
             </form>
         </div>
     </div>

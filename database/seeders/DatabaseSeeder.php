@@ -29,14 +29,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $siswa = User::create([
-            'name' => 'Budi Santoso',
+            'name' => 'Budi',
             'email' => 'siswa@gmail.com',
             'password' => Hash::make('123'),
             'role' => 'siswa',
         ]);
 
         $sopir = User::create([
-            'name' => 'Pak Sopir',
+            'name' => 'Pak wawan',
             'email' => 'sopir@gmail.com',
             'password' => Hash::make('123'),
             'role' => 'sopir',
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         // =========================
         $student = Student::create([
             'user_id' => $siswa->id,
-            'name_student' => 'Budi Santoso',
+            'name_student' => 'Budi',
             'class_student' => '6A',
             'address_student' => 'Jl. Melati No. 12, Solo',
             'phone_student' => '081234567890',
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         // =========================
         $driver = Driver::create([
             'user_id' => $sopir->id,
-            'name_driver' => 'Pak Eko',
+            'name_driver' => 'Pak Wawan',
             'birthdate_driver' => '1985-03-15',
             'address_driver' => 'Jl. Mawar No. 5, Solo',
             'phone_driver' => '081298765432',
@@ -73,8 +73,8 @@ class DatabaseSeeder extends Seeder
         // =========================
         $vehicle = Vehicle::create([
             'license_plate' => 'AD1234CD',
-            'name_vehicle' => 'Toyota Avanza',
-            'type_vehicle' => 'Car',
+            'name_vehicle' => 'Avanza',
+            'type_vehicle' => 'Toyota',
             'year_vehicle' => '2021',
         ]);
 
@@ -96,12 +96,32 @@ class DatabaseSeeder extends Seeder
 
         $status2 = Status::create([
             'kode_status' => 'ST02',
-            'nama_status' => 'Dalam perjalanan menjemput',
+            'nama_status' => 'Pengemudi menuju lokasimu',
         ]);
 
         $status3 = Status::create([
             'kode_status' => 'ST03',
-            'nama_status' => 'Selesai mengantar',
+            'nama_status' => 'Pengemudi tiba dilokasimu',
+        ]);
+
+        $status4 = Status::create([
+            'kode_status' => 'ST04',
+            'nama_status' => 'Pengemudi menuju sekolah',
+        ]);
+
+        $status5 = Status::create([
+            'kode_status' => 'ST05',
+            'nama_status' => 'Pengemudi tiba disekolah',
+        ]);
+
+        $status6 = Status::create([
+            'kode_status' => 'ST06',
+            'nama_status' => 'Menunggu giliran penjemputan',
+        ]);
+
+        $status7 = Status::create([
+            'kode_status' => 'ST07',
+            'nama_status' => 'Selesai',
         ]);
 
         // =========================
